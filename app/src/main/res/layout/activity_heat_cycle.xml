@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF8E1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🌡️ Heat Cycle Tracker"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#E65100"
+            android:paddingBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cow heat cycle repeats every 21 days"
+            android:textSize="13sp"
+            android:textColor="#888"
+            android:paddingBottom="16dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Last Heat Date (DD/MM/YYYY)"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLastHeatDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFF3E0">
+            <TextView
+                android:id="@+id/tvNextHeatDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📅 Next Heat Date: (enter last heat date)"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#E65100"
+                android:padding="16dp"/>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Breeding Date (DD/MM/YYYY) - Optional"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBreedingDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Notes (Bull name, AI details etc.)"
+            android:layout_marginBottom="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etHeatNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnSaveHeatCycle"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="💾 Save Heat Cycle Record"
+            android:backgroundTint="#FF6F00"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📋 Heat Cycle History"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#E65100"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tvHeatCycleList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No records yet"
+            android:textSize="14sp"
+            android:textColor="#555"
+            android:padding="8dp"/>
+
+    </LinearLayout>
+</ScrollView>
