@@ -130,6 +130,197 @@ GokulaHealth/
 ├── settings.gradle.kts                           ← Project settings
 └── gradle-wrapper.properties                     ← Gradle version config
 
+🚀 Setup and Run Instructions
+
+Prerequisites
+
+Android Studio Panda 2025.3.1 or later
+Android SDK API 23 (Marshmallow) or higher
+JDK 21
+Minimum 8GB RAM recommended for emulator
+
+
+Step 1 — Clone the Repository
+bashgit clone https://github.com/SnehaHK3/Gokula-Health-Sneha_H_K_2026.git
+cd Gokula-Health-Sneha_H_K_2026
+
+
+Step 2 — Open in Android Studio
+
+Open Android Studio
+Click File → Open
+Select the cloned project folder
+Wait for Gradle sync to complete (2–5 minutes)
+All dependencies download automatically — no manual setup needed
+
+
+Step 3 — Run the App
+
+Option A — Physical Android Device:
+
+Enable Developer Options on your Android phone
+Enable USB Debugging
+Connect via USB cable
+Click ▶️ Run in Android Studio
+
+
+Option B — Android Emulator:
+
+Open Device Manager in Android Studio
+Create virtual device: Pixel 6, API 34
+Click ▶️ to start the emulator
+Click ▶️ Run in Android Studio
+
+
+Step 4 — Build Debug APK
+Build → Generate Signed Bundle/APK → APK → Debug → Finish
+
+📊 Database Schema
+
+cattle_table
+
+Column          -          Type             -            Description
+
+id              -         Int (PK)          -        Auto-generated primary key
+
+earTagId        -          String           -         Unique tag e.g. COW-001
+
+name            -          String            -            Cow's name  
+
+breed           -         String             -          HF / Jersey / Gir
+
+dateOfBirth     -         String              -             DD/MM/YYYY
+
+photoPath       -          String             -           Gallery URI path
+
+registeredDate  -          String             -           Registration date
+
+
+milk_table
+
+Column           -          Type               -               Description
+
+id               -         Int (PK)            -         Auto-generated primary key
+
+cattleId         -         Int (FK)           -             References cattle_table
+
+date             -         String              -             Entry date DD/MM/YYYY
+
+morningLiters    -          Float               -         Morning yield in liters
+
+eveningLiters    -          Float              -          Evening yield in liters
+
+totalLiters      -          Float               -            Auto-calculated sum
+
+
+vaccination_table
+
+Column         -            Type               -                 Description
+
+id              -          Int (PK)             -         Auto-generated primary key
+
+cattleId        -          Int (FK)            -           References cattle_table
+
+vaccineName     -          String              -              FMD / BQ / HS / other
+
+dueDate         -          String             -               Due date DD/MM/YYYY
+
+isCompleted     -          Boolean              -                Completion status
+
+
+heat_cycle_table
+
+Column         -            Type              -                    Description
+
+id             -          Int (PK)            -              Auto-generated primary key
+
+cattleId        -         Int (FK)            -              References cattle_table
+
+lastHeatDate     -         String             -              Last observed heat date
+
+nextHeatDate     -         String             -              Auto-calculated +21 days
+
+breedingDate      -        String             -              Actual breeding date
+
+isBreedingDone      -      Boolean           -              Breeding completion status
+
+notes             -        String            -                Bull name / AI details
+
+
+✅ Success Criteria
+
+
+Criteria                                 -                    Implementation                          -          Status
+
+Monthly Average Yield auto-calculated     -         SQL AVG() query in MilkDao with month pattern      -         ✅ Done
+
+Reminders work without internet            -        AlarmManager + BOOT_COMPLETED receiver       -               ✅ Done
+
+UI uses cow/milk/syringe icons            -         Emoji icons + Material Design buttons        -               ✅ Done
+
+Cattle profile with Ear Tag and photo      -        Gallery picker + Glide image loading            -            ✅ Done
+
+30-day yield visualization                -         MPAndroidChart LineChart with gradient fill        -         ✅ Done
+
+Heat cycle auto-calculation               -         Last heat date + 21 days via Calendar AP          -         I✅ Done
+
+Health Passport export                    -         Android PdfDocument API → Downloads folder       -           ✅ Done
+
+
+Key Technical Implementations
+
+Offline Vaccination Alarm
+
+// Works without internet — fires at 8AM on due date
+alarmManager.setExactAndAllowWhileIdle(
+    AlarmManager.RTC_WAKEUP,
+    triggerTime,
+    pendingIntent
+)
+
+Monthly Average Yield Query
+
+kotlin@Query("SELECT AVG(totalLiters) FROM milk_table
+        WHERE cattleId = :cattleId AND date LIKE :monthPattern")
+fun getMonthlyAverage(cattleId: Int, monthPattern: String): LiveData<Float>
+
+
+Heat Cycle Auto-Calculation
+
+kotlin// Cow heat cycle = 21 days
+calendar.add(Calendar.DAY_OF_MONTH, 21)
+val nextHeatDate = sdf.format(calendar.time)
+
+
+📋 Android Permissions
+
+xml<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+<uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+<uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    android:maxSdkVersion="28"/>
+
+🌟 Impact Goals
+
+Goal                            -                    How App Achieves It
+
+🥛 White Revolution 2.0         -         Milk Diary + 30-day yield graph for data-driven farm management
+
+💰 Farmer Income               -          Automated offline vaccination alerts → 100% vaccination coverage
+
+📱 Rural Digitization          -          Offline-first app with simple icon-based UI for rural farmers
+
+
+👩‍💻 Developer
+
+Sneha H K
+
+🐙 GitHub: @SnehaHK3
+🎓 Track: Android App Development Using GenAI
+🌾 Domain: Agriculture / Livestock Management
+
+
 
 
 
