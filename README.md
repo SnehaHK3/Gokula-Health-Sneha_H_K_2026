@@ -95,6 +95,43 @@ KSP                  -      2.1.0-1.0.29       -        Code generation for Room
 
 Gradle               -        8.11.1           -           Build system
 
+📁 Project Structure
+
+GokulaHealth/
+├── app/
+│   └── src/main/
+│       ├── AndroidManifest.xml
+│       └── java/com/gokulahealth/
+│           ├── MainActivity.kt                   ← Main dashboard (6 buttons)
+│           ├── data/
+│           │   ├── Cattle.kt                     ← Cattle entity
+│           │   ├── MilkEntry.kt                  ← Milk entry entity
+│           │   ├── Vaccination.kt                ← Vaccination entity
+│           │   ├── HeatCycle.kt                  ← Heat cycle entity
+│           │   ├── CattleDao.kt                  ← Cattle DAO
+│           │   ├── MilkDao.kt                    ← Milk DAO with AVG query
+│           │   ├── VaccinationDao.kt             ← Vaccination DAO
+│           │   ├── HeatCycleDao.kt               ← Heat cycle DAO
+│           │   └── AppDatabase.kt                ← Room database instance
+│           ├── ui/
+│           │   ├── CattleListActivity.kt         ← View all cattle
+│           │   ├── AddCattleActivity.kt          ← Register new cattle
+│           │   ├── MilkDiaryActivity.kt          ← Daily milk entry
+│           │   ├── VaccinationActivity.kt        ← Vaccination reminders
+│           │   ├── YieldGraphActivity.kt         ← 30-day chart
+│           │   ├── HeatCycleActivity.kt          ← Heat cycle tracker
+│           │   └── HealthPassportActivity.kt     ← PDF export
+│           ├── adapter/
+│           │   ├── CattleAdapter.kt              ← RecyclerView adapter
+│           │   └── MilkAdapter.kt                ← RecyclerView adapter
+│           └── receiver/
+│               └── VaccinationReceiver.kt        ← BroadcastReceiver for alarms
+├── build.gradle.kts                              ← App dependencies
+├── settings.gradle.kts                           ← Project settings
+└── gradle-wrapper.properties                     ← Gradle version config
+
+
+
 
 
 
