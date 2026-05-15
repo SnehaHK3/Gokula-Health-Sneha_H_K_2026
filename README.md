@@ -67,6 +67,8 @@ Generate a PDF document with complete cattle health info
 Saved to device Documents folder
 Can be shared for insurance or cattle resale
 
+
+
 🛠️ Tech Stack
 
 Technology           -         Version         -               Purpose
@@ -94,6 +96,8 @@ Material Design      -        31.13.0          -       Modern intuitive UI compo
 KSP                  -      2.1.0-1.0.29       -        Code generation for Room DB
 
 Gradle               -        8.11.1           -           Build system
+
+
 
 📁 Project Structure
 
@@ -129,6 +133,8 @@ GokulaHealth/
 ├── build.gradle.kts                              ← App dependencies
 ├── settings.gradle.kts                           ← Project settings
 └── gradle-wrapper.properties                     ← Gradle version config
+
+
 
 🚀 Setup and Run Instructions
 
@@ -175,7 +181,10 @@ Click ▶️ Run in Android Studio
 Step 4 — Build Debug APK
 Build → Generate Signed Bundle/APK → APK → Debug → Finish
 
+
+
 📊 Database Schema
+
 
 cattle_table
 
@@ -196,6 +205,8 @@ photoPath       -          String             -           Gallery URI path
 registeredDate  -          String             -           Registration date
 
 
+
+
 milk_table
 
 Column           -          Type               -               Description
@@ -213,6 +224,8 @@ eveningLiters    -          Float              -          Evening yield in liter
 totalLiters      -          Float               -            Auto-calculated sum
 
 
+
+
 vaccination_table
 
 Column         -            Type               -                 Description
@@ -226,6 +239,8 @@ vaccineName     -          String              -              FMD / BQ / HS / ot
 dueDate         -          String             -               Due date DD/MM/YYYY
 
 isCompleted     -          Boolean              -                Completion status
+
+
 
 
 heat_cycle_table
@@ -245,6 +260,8 @@ breedingDate      -        String             -              Actual breeding dat
 isBreedingDone      -      Boolean           -              Breeding completion status
 
 notes             -        String            -                Bull name / AI details
+
+
 
 
 ✅ Success Criteria
@@ -267,6 +284,8 @@ Heat cycle auto-calculation               -         Last heat date + 21 days via
 Health Passport export                    -         Android PdfDocument API → Downloads folder       -           ✅ Done
 
 
+
+
 Key Technical Implementations
 
 Offline Vaccination Alarm
@@ -278,6 +297,7 @@ alarmManager.setExactAndAllowWhileIdle(
     pendingIntent
 )
 
+
 Monthly Average Yield Query
 
 kotlin@Query("SELECT AVG(totalLiters) FROM milk_table
@@ -285,11 +305,13 @@ kotlin@Query("SELECT AVG(totalLiters) FROM milk_table
 fun getMonthlyAverage(cattleId: Int, monthPattern: String): LiveData<Float>
 
 
+
 Heat Cycle Auto-Calculation
 
 kotlin// Cow heat cycle = 21 days
 calendar.add(Calendar.DAY_OF_MONTH, 21)
 val nextHeatDate = sdf.format(calendar.time)
+
 
 
 📋 Android Permissions
@@ -301,6 +323,8 @@ xml<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
     android:maxSdkVersion="28"/>
 
+
+
 🌟 Impact Goals
 
 Goal                            -                    How App Achieves It
@@ -310,6 +334,7 @@ Goal                            -                    How App Achieves It
 💰 Farmer Income               -          Automated offline vaccination alerts → 100% vaccination coverage
 
 📱 Rural Digitization          -          Offline-first app with simple icon-based UI for rural farmers
+
 
 
 👩‍💻 Developer
