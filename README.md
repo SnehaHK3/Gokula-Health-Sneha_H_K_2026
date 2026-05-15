@@ -69,31 +69,31 @@ Can be shared for insurance or cattle resale
 
 🛠️ Tech Stack
 
-Technology              Version                Purpose
+Technology           -         Version         -               Purpose
 
-Kotlin                   2.1.0               Primary programming language
+Kotlin               -          2.1.0          -       Primary programming language
 
-Android Studio         Panda 2025.3.1        Development environment
+Android Studio       -      Panda 2025.3.1     -        Development environment
 
-Room Database           2.8.4O                 ffline SQLite storage
+Room Database        -         2.8.4O          -         ffline SQLite storage
 
-MPAndroidChartv         3.1.0                30-day milk yield line chart
+MPAndroidChartv      -         3.1.0           -       30-day milk yield line chart
 
-AlarmManager           Android API           Offline vaccination reminders
+AlarmManager         -       Android API       -     Offline vaccination reminders
 
-Glide                   4.16.0                Load and display cow photos
+Glide                -         4.16.0          -       Load and display cow photos
 
-LiveData + ViewMode     l2.8.7                   Real-time UI updates
+LiveData + ViewMode  -         l2.8.7          -         Real-time UI updates
 
-Kotlin Coroutines        1.8.1               Background database operations
+Kotlin Coroutines    -         1.8.1           -       Background database operations
 
-Android PdfDocument     Built-in API          Health passport PDF export
+Android PdfDocument  -      Built-in API       -        Health passport PDF export
 
-Material Design          31.13.0              Modern intuitive UI components
+Material Design      -        31.13.0          -       Modern intuitive UI components
 
-KSP                    2.1.0-1.0.29            Code generation for Room DB
+KSP                  -      2.1.0-1.0.29       -        Code generation for Room DB
 
-Gradle                   8.11.1                      Build system
+Gradle               -        8.11.1           -           Build system
 
 
 
